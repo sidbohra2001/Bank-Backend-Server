@@ -1,0 +1,66 @@
+server:
+  port: 3333
+
+spring:
+  application:
+    name: bank-server-api-gateway
+  boot:
+    admin:
+      client:
+        url: http://localhost:9099
+        instance:
+          management-base-url: http://localhost:2222
+  
+  
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id : authserver
+          uri : lb://AUTH-SERVER/
+          predicates:
+            - Path=/auth/**
+        - id : customer
+          uri :  lb://BANK-SERVER-CUSTOMER-SERVICE/
+          predicates:
+            - Path=/customer/**
+          filters:
+            - AuthenticationFilter
+        - id : account
+          uri :  lb://BANK-SERVER-ACCOUNT-SERVICE/
+          predicates:
+            - Path=/account/**
+          filters:
+            - AuthenticationFilter
+        - id : transaction
+          uri :  lb://BANK-SERVER-TRANSACTION-SERVICE/
+          predicates:
+            - Path=/transaction/**
+          filters:
+            - AuthenticationFilter
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:2222/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+        #logging:
+        #  level:
+        #    root: INFO
+        #  file:
+        #    path: .
+        #    name : application.log
+        
+        

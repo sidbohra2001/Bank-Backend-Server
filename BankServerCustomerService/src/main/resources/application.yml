@@ -1,0 +1,67 @@
+server:
+  port: 4444
+  servlet:
+    context-path: /customer
+  
+spring:
+  application:
+    name: bank-server-customer-service
+  boot:
+    admin:
+      client:
+        url: http://localhost:9099
+        instance:
+          management-base-url: http://localhost:4444/customer
+  datasource:
+    url: jdbc:mysql://localhost:3306/bank_server_customer?createDatabaseIfNotExist=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+
+management:
+  endpoint:
+    web:
+      exposure:
+        include: "*"
+  endpoints:
+    health:
+      show-details: always
+       
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:2222/eureka/
+    register-with-eureka: true
+    fetch-registry: true  
+  instance:
+    hostname: localhost
+    prefer-ip-address: true
+    metadataMap:
+      swagger-uri : /customer/v3/api-docs
+    
+#springdoc:
+#  swagger-ui:
+#    path: /swagger-ui.html
+    
+#logging:
+#  level:
+#    root: INFO
+#  file:
+#    path: .
+#    name : application.log
+
+axon:
+  eventhandling:
+    processors:
+      name:
+        mode: tracking
+
+  distributed:
+    enabled: true
