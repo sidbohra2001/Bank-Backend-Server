@@ -120,7 +120,7 @@
 	</dependencyManagement>
 
 	<build>
-		<finalName>Authentication-Server</finalName>
+		<finalName>auth-server</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

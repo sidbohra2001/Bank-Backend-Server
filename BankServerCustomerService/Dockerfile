@@ -1,4 +1,4 @@
 FROM openjdk:17-alpine
-COPY BankServerCustomerService.jar BankServerCustomerService.jar
+COPY /target/customer-service.jar customer-service.jar
 EXPOSE 4444
-ENTRYPOINT ["java","-jar","/BankServerCustomerServicee.jar"]
+ENTRYPOINT ["java","-jar","/target/customer-service.jar"]

@@ -119,7 +119,7 @@
 	</dependencyManagement>
 
 	<build>
-		<finalName>BankServerAccountService</finalName>
+		<finalName>account-service</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
