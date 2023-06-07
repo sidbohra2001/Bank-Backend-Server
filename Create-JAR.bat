@@ -1,20 +1,20 @@
-cd /BankServerEurekaServer
-mvn clean compile package -Dmaven.test.skip
+cd ./BankServerEurekaServer
+start mvn clean compile package -Dmaven.test.skip
 
-cd /BankServerAdminServer
-mvn clean compile package -Dmaven.test.skip
+cd ./BankServerAdminServer
+start mvn clean compile package -Dmaven.test.skip
 
-cd /BankServerAuthenticationService
-mvn clean compile package -Dmaven.test.skip
+cd ./BankServerAuthenticationService
+start mvn clean compile package -Dmaven.test.skip
 
-cd /BankServerApiGateway
-mvn clean compile package -Dmaven.test.skip
+cd ./BankServerApiGateway
+start mvn clean compile package -Dmaven.test.skip
 
-cd /BankServerCustomerService
-mvn clean compile package -Dmaven.test.skip
+cd ./BankServerCustomerService
+start mvn clean compile package -Dmaven.test.skip
 
-cd /BankServerAccountService
-mvn clean compile package -Dmaven.test.skip
+cd ./BankServerAccountService
+start mvn clean compile package -Dmaven.test.skip
 
-cd /BankServerTransactionService
-mvn clean compile package -Dmaven.test.skip
+cd ./BankServerTransactionService
+start mvn clean compile package -Dmaven.test.skip
